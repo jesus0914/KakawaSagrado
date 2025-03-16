@@ -1,4 +1,5 @@
 "use client";
+
 import { useGetCategoryProduct } from "@/api/getCategoryProduct";
 import { Separator } from "@/components/ui/separator";
 import { ProductType } from "@/types/product";
@@ -9,9 +10,15 @@ import SkeletonSechema from "@/components/skeletonSchema";
 import ProductCard from "../components/Product-card";
 import { useState } from "react";
 
-export default function Page() {
+// Función para obtener el parámetro de la URL de forma segura
+function useSafeParams() {
   const params = useParams();
-  const { categorySlog } = params;
+  const categorySlog = Array.isArray(params.categorySlog) ? params.categorySlog[0] : params.categorySlog;
+  return { categorySlog };
+}
+
+export default function Page() {
+  const { categorySlog } = useSafeParams();
   const { result, loading }: ResponseType = useGetCategoryProduct(categorySlog);
 
   const [filterOrigin, setFilterOrigin] = useState("");
