@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import * as React from "react";
+import Link from "next/link";  // Asegúrate de importar Link de next/link
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,9 +12,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
-const  MenuList=()=> {
+const MenuList = () => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
@@ -24,27 +24,27 @@ const  MenuList=()=> {
             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                  <Link
                     href="/"
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                   >
                     <div className="mb-2 mt-4 text-lg font-medium">
                       KakawaSagrado
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                    La esencia del cacao en su máxima expresión. Desde granos selectos hasta cacao molido, cápsulas y exquisitos chocolates, fusionamos tradición y calidad para que disfrutes su sabor puro en cada bocado y sorbo.
+                      La esencia del cacao en su máxima expresión. Desde granos selectos hasta cacao molido, cápsulas y exquisitos chocolates, fusionamos tradición y calidad para que disfrutes su sabor puro en cada bocado y sorbo.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenuLink>
               </li>
               <ListItem href="/shop" title="Tienda">
                 Accede a tu información,tus pedidos y mucho más.
               </ListItem>
               <ListItem href="/offers" title="Ofertas">
-                Seccion dedicada a promociones y descuentos especiales.
+                Sección dedicada a promociones y descuentos especiales.
               </ListItem>
               <ListItem href="/" title="Accesorios">
-                Productos complementarios, molinos ,Kit cultivo , abonos, etc.
+                Productos complementarios, molinos, Kit cultivo, abonos, etc.
               </ListItem>
             </ul>
           </NavigationMenuContent>
@@ -66,7 +66,7 @@ const  MenuList=()=> {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/accesorios" legacyBehavior passHref>
+          <Link href="/accesorios" passHref legacyBehavior>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Accesorios
             </NavigationMenuLink>
@@ -74,29 +74,32 @@ const  MenuList=()=> {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
-}
+  );
+};
+
 export default MenuList;
+
 const components: { title: string; href: string; description: string }[] = [
   {
-      title: "Cacao Grano",
-      href: "/category/grano",
-      description:
-        "Granos de cacao puros y sin procesar, ideales para la elaboración de chocolate artesanal y otras preparaciones.",
-    },
-    {
-      title: "Cacao Molido",
-      href: "/category/molido",
-      description:
-        "Cacao finamente molido listo para preparar deliciosas bebidas y recetas con todo su sabor y propiedades naturales.",
-    },
-    {
-      title: "Cacao en Cápsula",
-      href: "/category/capsulas",
-      description:
-        "Cápsulas de cacao listas para usar en cafeteras compatibles, ofreciendo una experiencia práctica y aromática.",
-    },
-]
+    title: "Cacao Grano",
+    href: "/category/grano",
+    description:
+      "Granos de cacao puros y sin procesar, ideales para la elaboración de chocolate artesanal y otras preparaciones.",
+  },
+  {
+    title: "Cacao Molido",
+    href: "/category/molido",
+    description:
+      "Cacao finamente molido listo para preparar deliciosas bebidas y recetas con todo su sabor y propiedades naturales.",
+  },
+  {
+    title: "Cacao en Cápsula",
+    href: "/category/capsulas",
+    description:
+      "Cápsulas de cacao listas para usar en cafeteras compatibles, ofreciendo una experiencia práctica y aromática.",
+  },
+];
+
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
@@ -104,7 +107,7 @@ const ListItem = React.forwardRef<
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
+        <Link
           ref={ref}
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
@@ -116,10 +119,10 @@ const ListItem = React.forwardRef<
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = "ListItem"
+  );
+});
 
+ListItem.displayName = "ListItem";
