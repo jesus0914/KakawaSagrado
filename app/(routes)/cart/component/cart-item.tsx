@@ -6,34 +6,29 @@ import { formatPrice } from "@/lib/formatPrice";
 import { cn } from "@/lib/utils";
 import { ProductType } from "@/types/product";
 import { X } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 interface CartItemProps {
   product: ProductType;
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-  
-  const router = useRouter();
   const { removeItem } = useCart();
-  const imageUrl = product.images?.length > 0 ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${product.images[0].url}` : null;
- 
+  
   return (
     <li className="flex py-6 border-b">
-      < ProductsImageMineature product={product}/>
-      <div className=" flex justify-between flex-1 px-6">
+      <ProductsImageMineature product={product} />
+      <div className="flex justify-between flex-1 px-6">
         <div>
-            <h2 className="text-lg font-bold ">{product.productName}</h2>
-            <p className="font-bold">{formatPrice(product.price)}</p>
-            < ProductTasteOrigin  origin={product.origin} taste={product.taste}/>
+          <h2 className="text-lg font-bold">{product.productName}</h2>
+          <p className="font-bold">{formatPrice(product.price)}</p>
+          <ProductTasteOrigin origin={product.origin} taste={product.taste} />
         </div>
         <div>
-          <button className={cn("rounded-full flex items-center justify-center bg-white  dark:text-black border shadow-md p-1 hover:scale-110 transition")}>
-              <X size={20} onClick={()=> removeItem(product.id)}/>
+          <button className={cn("rounded-full flex items-center justify-center bg-white dark:text-black border shadow-md p-1 hover:scale-110 transition")}>
+            <X size={20} onClick={() => removeItem(product.id)} />
           </button>
         </div>
       </div>
-     
     </li>
   );
 };
