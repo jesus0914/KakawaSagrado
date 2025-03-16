@@ -50,7 +50,7 @@ export default function Page() {
 
   return (
     <div className="max-w-6xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
-      <h1 className="mb-5 text-3xl font-bold">Shopping Cart</h1>
+      <h1 className="mb-5 text-3xl font-bold">Carrito de Compras</h1>
 
       <div className="grid sm:grid-cols-2 sm:gap-5">
         {/* Sección del carrito */}
@@ -69,15 +69,23 @@ export default function Page() {
         {/* Sección del resumen de compra */}
         <div className="max-w-xl">
           <div className="p-6 rounded-lg bg-slate-100">
-            <p className="mb-3 text-lg font-semibold dark:text-black">Order Summary</p>
+            <p className="mb-3 text-lg font-semibold dark:text-black">Resumen del Pedido</p>
             <Separator />
             <div className="flex justify-between gap-5 my-4 dark:text-black">
               <p>Total del Pedido</p>
               <p>{formatPrice(totalPrice)}</p>
             </div>
-            <div className="flex items-center justify-center w-full mt-3">
+            <div className="flex items-center justify-center w-full mt-3 gap-3">
               <Button className="w-full" onClick={buyStripe} disabled={items.length === 0}>
                 Comprar
+              </Button>
+              <Button
+                className="w-full"
+                onClick={removeAll}
+                disabled={items.length === 0}
+                variant="destructive"
+              >
+                Vaciar Carrito
               </Button>
             </div>
           </div>
