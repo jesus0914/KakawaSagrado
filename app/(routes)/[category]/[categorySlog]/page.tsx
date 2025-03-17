@@ -13,7 +13,7 @@ import { useState } from "react";
 // Función para obtener el parámetro de la URL de forma segura
 function useSafeParams() {
   const params = useParams();
-  const categorySlog = Array.isArray(params.categorySlog) ? params.categorySlog[0] : params.categorySlog;
+  const categorySlog = Array.isArray(params.categorySlog) ? params.categorySlog[0] : params.categorySlog ?? ""; // Aseguramos que categorySlog nunca sea undefined
   return { categorySlog };
 }
 
